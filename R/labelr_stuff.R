@@ -69,6 +69,6 @@ re_label_var <- function(var, variable, labels, ...) {
     })
 
   labelr::labels$set(re_labels)
-  labelled <- labelr::label_var(var, variable = var_name, ...)
+  labelled <- labelr::label_var(var, variable = variable, ...)
   return(labelled)
 }
