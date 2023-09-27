@@ -7,7 +7,7 @@ library(tidyverse)
 
 rm(list = ls())
 
-path <- "data-raw/gemeindetypologie.xlsx"
+path <- "data-raw/typo_urba/gemeindetypologie.xlsx"
 sheet1 <- "Daten"
 sheet2 <- "CH1+CL_GDET9+2012.1"
 

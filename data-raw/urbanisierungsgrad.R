@@ -7,7 +7,7 @@ library(tidyverse)
 
 rm(list = ls())
 
-path <- "data-raw/urbanisierungsgrad.xlsx"
+path <- "data-raw/typo_urba/urbanisierungsgrad.xlsx"
 sheet1 <- "Daten"
 sheet2 <- "CH1+CL_DEGURB+2017.1"
 
