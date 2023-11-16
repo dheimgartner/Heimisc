@@ -13,3 +13,37 @@ install <- function(pkg, ...) {
 uninstall <- function(pkg, ...) {
   remove.packages(pkg, ...)
 }
+
+#' @export
+update_cran <- function(pkg_path, ...) {
+  msg <- list()
+
+  tmp <- tempdir()
+  built <- devtools::build(pkg = pkg_path, path = tmp, ...)
+
+  contrib <- paste(get_cran(), "src", "contrib/", sep = "/")
+  contrib <- gsub(pattern = "^file:/", replacement = "", x = contrib)
+
+  success <- file.copy(built, contrib, overwrite = TRUE)
+  if (!success) {
+    msg_ = paste0("Copying to ", contrib, " failed...")
+    msg <- append(msg, msg_)
+  }
+
+  tools::write_PACKAGES(contrib)
+
+  cli::cli({
+    cli::cli_h1(cli::col_green("Updated package in local CRAN"))
+    cli::cli_text(pkg_path)
+    if (success) {
+      cli::cli_alert_success("Yay")
+    } else {
+      cli::cli_alert_danger("Failure")
+      purrr::walk(msg, function(x) {
+        cli::cli_alert_warning(x)
+      })
+    }
+  })
+
+  invisible(success)
+}
