@@ -14,6 +14,20 @@ uninstall <- function(pkg, ...) {
   remove.packages(pkg, ...)
 }
 
+#' Execute `write_PACKAGES`
+#'
+#' @export
+write_cran <- function() {
+  contrib <- paste(get_cran(), "src", "contrib/", sep = "/")
+  contrib <- gsub(pattern = "^file:/", replacement = "", x = contrib)
+  tools::write_PACKAGES(contrib)
+  cli::cli({
+    cli::cli_h1((cli::col_green("Executed `tools::write_PACKAGES(contrib)`")))
+    cli::cli_text(contrib)
+  })
+}
+
+
 #' @export
 update_cran <- function(pkg_path, ...) {
   msg <- list()
