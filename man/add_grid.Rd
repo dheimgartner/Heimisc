@@ -4,7 +4,7 @@
 \alias{add_grid}
 \title{Add gridlines}
 \usage{
-add_grid(color = "grey", linetype = "dotted", linewidth = 0.5, ...)
+add_grid(color = "grey", linetype = "solid", linewidth = 0.2, ...)
 }
 \description{
 Add gridlines
