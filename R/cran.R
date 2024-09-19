@@ -5,8 +5,8 @@ get_cran <- function(local_cran = "_CRAN") {
 }
 
 #' @export
-install <- function(pkg, ...) {
-  install.packages(pkg, repos = get_cran(), ...)
+install <- function(pkg) {
+  install.packages(pkg, repos = get_cran())
 }
 
 #' @export
