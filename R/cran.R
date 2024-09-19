@@ -29,7 +29,7 @@ write_cran <- function() {
 
 
 #' @export
-update_cran <- function(pkg_path, ...) {
+update_cran <- function(pkg_path = ".", ...) {
   msg <- list()
 
   tmp <- tempdir()
